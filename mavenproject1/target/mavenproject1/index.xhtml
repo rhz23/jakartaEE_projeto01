@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Jogo da Soma</title>
+    </h:head>
+    <h:body>        
+        <h:form rendered="#{jsfPartida.partidaIniciada == false}">
+            <label for="nomeJogador">Insira seu nome: </label>
+            <h:inputText value="#{jsfPartida.nomeJogador}"/>
+            <h:commandButton value="ok" action="#{jsfPartida.setJogador}" />
+        </h:form> 
+        <h:form rendered="#{jsfPartida.partidaIniciada == true and jsfPartida.partidaFinalizada == false}">
+            <label for="nomeJogador">Jogador: </label>
+            <h:outputText value="#{jsfPartida.nomeJogador} "/>
+            <label for="pontosJogador">Pontos: </label>
+            <h:outputText value="#{jsfPartida.pontosJogador}" />
+            <br />
+            <br />
+            <h:outputText value="[#{jsfPartida.jogada.numeroUm}] + " />
+            <h:outputText value="[#{jsfPartida.jogada.numeroDois}] = " />
+            <h:inputText value="#{jsfPartida.valor}"/>
+            <h:commandButton value="Verificar" action="#{jsfPartida.verificaJogada()}" />
+        </h:form>
+        <h:form rendered="#{jsfPartida.partidaIniciada == true and jsfPartida.partidaFinalizada == true}">
+            <h1>Partida Finalizada</h1>
+            <br />
+            <label for="nomeJogador">Jogador: </label>
+            <h:outputText value="#{jsfPartida.nomeJogador} "/>
+            <label for="pontosJogador">Pontos: </label>
+            <h:outputText value="#{jsfPartida.pontosJogador} !!!" />
+            <br />
+            <br />
+            <h:commandButton value="Nova Partida" action="#{jsfPartida.iniciarNovaPartida()}" />
+        </h:form>
+        <h1>====== Ranking ======</h1>
+        <h:form>
+            <h:dataTable value="#{jsfRanking.ranking}" var="jogador">
+                <h:column>
+                    <h:outputText value="#{jogador.nome}......" />
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{jogador.pontos}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

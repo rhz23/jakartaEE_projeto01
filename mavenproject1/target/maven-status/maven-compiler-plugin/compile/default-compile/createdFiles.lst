@@ -1,0 +1,10 @@
+br/ejb/EjbConsumidorTopic.class
+br/ejb/EjbRanking.class
+br/JAXRSConfiguration.class
+br/ejb/EjbPartida.class
+br/jsf/JsfRanking.class
+br/data/crud/CrudJogador.class
+br/data/crud/Jogada.class
+br/data/model/Jogador.class
+br/SampleResource.class
+br/jsf/JsfPartida.class
